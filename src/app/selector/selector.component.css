@@ -15,5 +15,13 @@
     height: 65vh;
     margin-top: 10vh;
     background-color: #322783b2;
-    backdrop-filter:blur(10px)
+    backdrop-filter:blur(10px);
+    justify-content: center;
+}
+.n{
+
+  margin-left: 200px;
+}
+p{
+  color: white;
 }
