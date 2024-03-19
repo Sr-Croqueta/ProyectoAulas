@@ -1,3 +1,3 @@
 import { Routes } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-export const routes: Routes = [ {path:"prv",component:HeaderComponent}];
+import { SelectorComponent } from './selector/selector.component';
+export const routes: Routes = [ {path: "",redirectTo:"Seleccion", pathMatch:"full"},{path:"Seleccion",component:SelectorComponent}];
