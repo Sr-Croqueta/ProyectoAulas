@@ -1,0 +1,27 @@
+.fondo{
+    background: linear-gradient(to bottom, rgba(51, 51, 51, 0), rgb(44, 44, 44)),
+    linear-gradient(to top, rgba(36, 35, 35, 0), rgba(29, 28, 28, 0.8)),
+    url('../../assets/img/centrodiagnostico.jpg') no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 90.5vh;
+  display: flex;
+  justify-content: center;
+
+}
+.selector{
+    width: 30vw;
+    border-radius: 25px;
+    height: 65vh;
+    margin-top: 10vh;
+    background-color: #322783b2;
+    backdrop-filter:blur(10px);
+    justify-content: center;
+}
+.n{
+
+  margin-left: 200px;
+}
+p{
+  color: white;
+}
