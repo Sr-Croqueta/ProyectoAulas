@@ -17,11 +17,84 @@
     background-color: #322783b2;
     backdrop-filter:blur(10px);
     justify-content: center;
-}
-.n{
-
-  margin-left: 200px;
+    color: white;
 }
 p{
   color: white;
+}
+.selector select {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* Elimina la apariencia predeterminada del select */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.293 7.293a1 1 0 10-1.414 1.414L18.586 12l-3.707 3.293a1 1 0 101.414 1.414l4-4a1 1 0 000-1.414l-4-4zM7 12a1 1 0 011-1h8a1 1 0 110 2H8a1 1 0 01-1-1z" fill="%23333" /></svg>'); /* Agrega un icono de flecha */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+/* Estilos para los selects cuando están enfocados */
+.selector select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.tabla {
+  width: 60%;
+  margin-top: 10vh;
+  background-color: #322783b2;
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si la tabla es demasiado ancha */
+}
+
+.tabla table {
+  width: 100%;
+  border-collapse: collapse; /* Combina los bordes de las celdas para un aspecto más limpio */
+}
+
+.tabla th,
+.tabla td {
+  padding: 10px; /* Espacio interno dentro de las celdas */
+  text-align: center; /* Centra el contenido de las celdas */
+  border: 1px solid #ccc; /* Borde de las celdas */
+  color: white; /* Color del texto */
+}
+
+.tabla th {
+  background-color: #322783; /* Color de fondo para las celdas de encabezado */
+}
+
+.tabla th:first-child,
+.tabla td:first-child {
+  width: 25%; /* Ancho para la primera columna (Fecha) */
+}
+
+.tabla td {
+  background-color: #5a008f; /* Color de fondo para las celdas de datos */
+}
+
+.tabla th,
+.tabla td:first-child {
+  position: sticky; /* Hace que las celdas de encabezado y la primera columna se peguen al desplazarse */
+  left: 0;
+  z-index: 1;
+}
+
+.tabla th:first-child {
+  z-index: 2; /* Asegura que las celdas de encabezado se superpongan sobre las celdas de datos pegadas */
+}
+
+.tabla .content {
+  transition: background-color 0.3s ease; /* Agrega una transición suave al cambiar el color de fondo */
+  border-top: none;
+  border-bottom: none;
+  
+}
+
+.tabla .content:hover {
+  background-color: #555; /* Cambia el color de fondo al pasar el cursor sobre la celda */
 }

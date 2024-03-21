@@ -13,15 +13,34 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
   providers: [CentroService] // Proporciona el servicio localmente
 })
 export class SelectorComponent {
-  centr:any[]=[]
-  constructor(public centros: CentroService){
+  centr: any[] = [];
+  horas: number[] = [];
+  dias: Date[] = [];
+  fechaSeleccionada:any;
+  horaSeleccionada:any;
+
+  constructor(public centros: CentroService) {
     this.peti();
+    this.generarHoras();
+    this.generarDias();
   }
 
-  peti(){
-    this.centros.obtenertodos();
-    this.centr=this.centros.datosapi;
-    console.log(this.centros)
+  async peti() {
+    this.centros.obtenercentros();
+  }
+
+  generarHoras() {
+    for (let i = 8; i <= 22; i++) {
+      this.horas.push(i);
+    }
+  }
+
+  generarDias() {
+    const hoy = new Date();
+    for (let i = 0; i < 8; i++) {
+      const nuevoDia = new Date();
+      nuevoDia.setDate(hoy.getDate() + i);
+      this.dias.push(nuevoDia);
+    }
   }
 }
-

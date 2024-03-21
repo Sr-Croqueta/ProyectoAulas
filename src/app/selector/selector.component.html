@@ -1,11 +1,37 @@
 <div class="fondo">
-
     <div class="selector">
-        <div class="n"><p>Selecciona el centro deseado</p></div>
-        <div class="n"><p>Selecciona una fecha</p> <input type="text" id="fecha" ></div>
-        <div class="n"><p>Selecciona una hora</p> <input type="text" id="hora"></div>
-
-        
+      <div class="n">
+        <p>Selecciona el centro deseado</p>
+        <select>
+          <!-- Usando *ngFor para iterar sobre los elementos de centr -->
+          <option *ngFor="let centro of centros.trendapi" [value]="centro.id">{{ centro.nombre }}</option>
+        </select>
+      </div>
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <!-- Usando *ngFor para iterar sobre las fechas y crear las columnas -->
+              <ng-container *ngFor="let dia of dias">
+                <th>{{ dia | date: 'dd/MM/yyyy' }}</th>
+              </ng-container>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Usando *ngFor para iterar sobre las horas y crear las filas -->
+            <ng-container *ngFor="let hora of horas">
+              <tr>
+                <td>{{ hora }}:00</td>
+                <!-- Usando *ngFor para iterar sobre las fechas y crear las celdas -->
+                <ng-container *ngFor="let dia of dias">
+                  <!-- Genera la cadena de fecha y hora correspondiente para cada celda -->
+                  <td class="content"></td>
+                </ng-container>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-</div>
+  </div>
