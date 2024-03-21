@@ -1,17 +1,19 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CentroService {
   datosapi:any[]=[];
-  
-  constructor(private http: HttpClient, ) { }
+  headers:HttpHeaders;
+  constructor(private http: HttpClient, ) {
+    this.headers=new HttpHeaders()
+   }
 
   obtenertodos(){
-    this.http.get("http://127.0.0.1:8000/centros").subscribe ((datos:any)=>{
-      console.log(datos)
+    this.http.get("http://127.0.0.1:8000/centro").subscribe ((datos:any)=>{
+      
       this.datosapi = datos;
     })
   }

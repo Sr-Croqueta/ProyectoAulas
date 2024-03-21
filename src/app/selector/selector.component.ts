@@ -13,13 +13,15 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
   providers: [CentroService] // Proporciona el servicio localmente
 })
 export class SelectorComponent {
- 
+  centr:any[]=[]
   constructor(public centros: CentroService){
     this.peti();
   }
 
   peti(){
     this.centros.obtenertodos();
+    this.centr=this.centros.datosapi;
+    console.log(this.centros)
   }
 }
 
