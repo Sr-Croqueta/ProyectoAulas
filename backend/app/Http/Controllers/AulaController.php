@@ -16,14 +16,11 @@ class AulaController extends Controller
         return response()->json($aulas);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function obtenerAulasExcepto($aulaId)
     {
-        //
+        $aulas = Aula::where('id', '!=', $aulaId)->get();
+        return response()->json($aulas);
     }
-
     /**
      * Store a newly created resource in storage.
      */

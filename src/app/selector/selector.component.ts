@@ -17,6 +17,7 @@ export class SelectorComponent {
   horas: number[] = [];
   dias: Date[] = [];
   fechaSeleccionada:any;
+  centroSeleccionado:any;
   horaSeleccionada:any;
 
   constructor(public centros: CentroService) {
@@ -42,5 +43,16 @@ export class SelectorComponent {
       nuevoDia.setDate(hoy.getDate() + i);
       this.dias.push(nuevoDia);
     }
+  }
+
+  onSubmit() {
+    // Realizar la lógica necesaria al enviar el formulario
+    this.centros.obtenerAulasDisponibles(this.centroSeleccionado,this.horaSeleccionada,this.fechaSeleccionada);
+    console.log('Formulario enviado');
+    console.log('Centro seleccionado:', this.centroSeleccionado);
+    console.log('Hora seleccionada:', this.horaSeleccionada);
+    console.log('Fecha seleccionada:', this.fechaSeleccionada);
+    // Llamar al método peti() para obtener más datos si es necesario
+    this.peti();
   }
 }

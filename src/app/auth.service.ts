@@ -3,17 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+interface LoginResponse {
+  access_token: string;
+  // Otras propiedades si es necesario
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/login'; // URL de tu backend Laravel
+  private apiUrl = 'http://127.0.0.1:8000'; // URL de tu backend Laravel
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap(response => {
+  login(email: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`,{ credentials: { email, password } }).pipe(
+      tap((response: LoginResponse) => {
         // Almacena el token de acceso en el almacenamiento local
         localStorage.setItem('access_token', response.access_token);
       })

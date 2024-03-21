@@ -47,7 +47,7 @@ p{
   margin-top: 10vh;
   background-color: #322783b2;
   backdrop-filter: blur(10px);
-  border-radius: 25px;
+  
   overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si la tabla es demasiado ancha */
 }
 

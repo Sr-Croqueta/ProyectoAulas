@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'sacardisponibles', // Agrega aquí las rutas que deben ser excluidas
     ];
 }
