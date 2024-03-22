@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PatrullaController;
 
-use App\Http\Controllers\IncidenteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DisponibilidadController;
 use App\Http\Controllers\CentroController;
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +22,6 @@ Route::get('/', function () {
 });
 
 
-// Rutas para mostrar la lista de usuarios, crear un usuario nuevo y almacenar un usuario en la base de datos
-// Mostrar la lista de usuarios
-Route::get('/policias', [UserController::class, 'index'])->name('usuarios.index');
 
 // Almacenar un nuevo usuario en la base de datos
 Route::post('/users', [UserController::class, 'store'])->name('usuarios.store');
@@ -41,26 +37,12 @@ Route::put('/users/{user}', [UserController::class, 'update'])->name('usuarios.u
 
 // Eliminar un usuario de la base de datos
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('usuarios.destroy');
-// Rutas para mostrar todos los incidentes, crear un nuevo incidente, almacenar un nuevo incidente
-Route::get('/incidentes', [IncidenteController::class, 'index'])->name('incidentes.index');
-Route::get('/incidentes/create', [IncidenteController::class, 'create'])->name('incidentes.create');
-Route::post('/incidentes', [IncidenteController::class, 'store'])->name('incidentes.store');
 
-// Rutas para mostrar un incidente específico, editar un incidente, actualizar un incidente existente
-Route::get('/incidentes/{incidente}', [IncidenteController::class, 'show'])->name('incidentes.show');
-Route::get('/incidentes/{incidente}/edit', [IncidenteController::class, 'edit'])->name('incidentes.edit');
-Route::put('/incidentes/{incidente}', [IncidenteController::class, 'update'])->name('incidentes.update');
-
-// Ruta para eliminar un incidente
-Route::delete('/incidentes/{incidente}', [IncidenteController::class, 'destroy'])->name('incidentes.destroy');
-
-Route::get('/patrulla/create', [PatrullaController::class, 'create'])->name('patrulla.create');
-Route::get('/patrulla/edit/{id}', [PatrullaController::class, 'edit'])->name('patrulla.edit');
-Route::put('/patrulla/{matricula}', [PatrullaController::class, 'update'])->name('patrulla.update');
-Route::get('/patrulla/borrar/{id}', [PatrullaController::class, 'destroy'])->name('patrulla.destroy');
-Route::get('/patrulla/showAll', [PatrullaController::class, 'index'])->name('patrulla.show');
-Route::post('/patrulla', [PatrullaController::class, 'store'])->name('patrulla.store');
 Route::get('/centro', [CentroController::class, 'index'])->name('centro.index');
+Route::post('/sacardisponibles', [DisponibilidadController::class, 'index'])->name('centro.index');
+Route::get('/csrf-token', function() {
+    return response()->json([csrf_token()]);
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

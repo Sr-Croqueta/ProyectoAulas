@@ -9,3 +9,5 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
 Route::get('user-profile',[AuthController::class,'userProfile']);
 Route::get('logout',[AuthController::class,'logout']);
 });
+
+

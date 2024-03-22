@@ -7,12 +7,12 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/login'; // URL de tu backend Laravel
+  private apiUrl = 'http://127.0.0.1:8000'; // URL de tu backend Laravel
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, { email, password }).pipe(
+    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
       tap(response => {
         // Almacena el token de acceso en el almacenamiento local
         localStorage.setItem('access_token', response.access_token);
