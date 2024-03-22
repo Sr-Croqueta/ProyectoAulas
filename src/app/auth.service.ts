@@ -14,16 +14,18 @@ interface LoginResponse {
 })
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000'; // URL de tu backend Laravel
+  mensaje:any[]=[];
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap((response: LoginResponse) => {
-        // Almacena el token de acceso en el almacenamiento local
-        localStorage.setItem('access_token', response.access_token);
-      })
-    );
+  login(name: string,email: string, password: string) {
+    console.log(name)
+    return this.http.post(`${this.apiUrl}/registro`, {name, email, password }).subscribe((aulas: any) => {
+      // Manejar la respuesta aquí
+      console.log(aulas)
+      this.mensaje = aulas;
+      // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
+  });
   }
 
   logout(): void {

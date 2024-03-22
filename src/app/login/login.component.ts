@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
 
 
 export class LoginComponent {
+  name:string = '';
   email: string = '';
   password: string = '';
   errorMessage: string = '';
@@ -23,17 +24,8 @@ export class LoginComponent {
   constructor(private authService: AuthService) {}
 
   onSubmit(): void {
-    this.authService.login(this.email, this.password).subscribe(
-      () => {
-        // Autenticación exitosa, redirigir al dashboard u otra página
-        console.log('Inicio de sesión exitoso');
-        // Aquí puedes redirigir al usuario a otra página después del inicio de sesión
-      },
-      error => {
-        // Manejar errores de autenticación
-        console.error('Error al iniciar sesión:', error);
-        this.errorMessage = 'Error al iniciar sesión. Verifique sus credenciales e inténtelo de nuevo.';
-      }
-    );
+    console.log("entra")
+    this.authService.login(this.name,this.email, this.password)
+      
   }
 }

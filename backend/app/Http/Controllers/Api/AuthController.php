@@ -14,22 +14,34 @@ use Symfony\Component\HttpFoundation\Response;
 class AuthController extends Controller
 {
     public function register(Request $request){
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required'
-        ]);
-
-        $user = new User();
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=Hash::make($request->password);
-        $user->save();
         
+        $data= $request->json()->all();
+        try{
+            $request->validate([
+                'name'=>'required',
+                'email'=>'required|email|unique:users',
+                'password'=>'required'
+            ]);
+            $user = new User();
+            
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->password=Hash::make($request->password);
+            $user->save();
+            
+    
+            return response()->json([
+                "message"=>"Metodo register ok"
+               ]);
 
-       return response()->json([
-        "message"=>"Metodo register ok"
-       ]);
+        }catch(\Exception $e){
+            return response()->json([
+                "message"=>"Fallido $e" ,
+                "datos"=> $data
+               ]);
+        }
+
+       
 
         
 
