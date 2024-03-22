@@ -34,25 +34,22 @@ class AuthController extends Controller
         
 
     }
-
     public function login(Request $request){
-
-        $credentials=$request->validate([
-            'email'=>['required','email'],
-            'password'=>'required'
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
         ]);
-
-        if(Auth::attempt([$credentials]) ){
+    
+        if(Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('token')->palinTextToken;
-            $cookie = cookie('cookie_token',$token,60*24);
-            return response(["token"=>$token],Reponse::HTTP_OK)->withoutCookie($cookie);
-
-        }else{
-            return response(["message"=>"Credenciales Inválidas"],Response::HTTP_UNAUTHORIZED);
+            $token = $user->createToken('token')->plainTextToken; // Corregir 'palinTextToken' a 'plainTextToken'
+            $cookie = cookie('cookie_token', $token, 60*24);
+            return response(["token" => $token], Response::HTTP_OK)->withCookie($cookie); // Corregir 'Reponse' a 'Response' y 'withoutCookie' a 'withCookie'
+        } else {
+            return response(["message" => "Credenciales Inválidas"], Response::HTTP_UNAUTHORIZED); // Corregir 'Reponse' a 'Response'
         }
-
     }
+    
 
     public function userProfile(Request $request){
 

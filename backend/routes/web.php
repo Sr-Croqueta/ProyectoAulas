@@ -26,7 +26,8 @@ Route::post('/users', [UserController::class, 'store'])->name('usuarios.store');
 Route::post('login',[AuthController::class,'login']);
 // Mostrar los detalles de un usuario específico
 Route::get('/users/{user}', [UserController::class, 'show'])->name('usuarios.show');
-//antes api
+
+//antes api.php
 Route::post('registro',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 

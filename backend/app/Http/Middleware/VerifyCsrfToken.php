@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'sacardisponibles', // Agrega aquí las rutas que deben ser excluidas
-        'registro'
+        'registro',
+        'login'
     ];
 }
