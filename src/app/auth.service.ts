@@ -3,6 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+interface LoginResponse {
+  access_token: string;
+  // Otras propiedades si es necesario
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,9 +17,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap(response => {
+  login(email: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap((response: LoginResponse) => {
         // Almacena el token de acceso en el almacenamiento local
         localStorage.setItem('access_token', response.access_token);
       })

@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Time } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -7,35 +8,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class CentroService {
   datosapi:any[]=[];
   trendapi:any[]=[];
+  aula:any[]=[];
   constructor(private http: HttpClient, ) {
     
    }
    
-  obtenerAulasDisponibles(hora: number, dia: string, centro: string) {
-    // Obtener el token CSRF
-    this.http.get<string>('http://127.0.0.1:8000/csrf-token').subscribe(csrfToken => {
-      
-      const datos = { hora, dia, centro };
-      
-
-      // Agregar el token CSRF a las cabeceras
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': csrfToken
-      });
-      console.log(headers)
-
-      // Realizar la solicitud POST con el token CSRF incluido en las cabeceras
-      this.http.post("http://127.0.0.1:8000/sacardisponibles", datos, { headers }).subscribe(
-        
-        (error) => {
-          console.log(headers)
-          console.error('Error al obtener aulas disponibles:', error);
-        }
-      );
+   obtenerAulasDisponibles(hora: any, dia: any, centro: string) {
+    // Convertir los datos a JSON
+    const datos = { hora, dia, centro };
+    
+    // Realizar la solicitud POST con los datos en el cuerpo de la solicitud y las cabeceras especificadas
+    this.http.post("http://127.0.0.1:8000/sacardisponibles", datos).subscribe((aulas: any) => {
+        // Manejar la respuesta aquí
+        console.log(aulas)
+        this.aula = aulas;
+        console.log(this.aula);
+        // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
     });
-  }
-
+}
   obtenercentros(){
     this.http.get("http://127.0.0.1:8000/centro").subscribe ((datos:any)=>{
       

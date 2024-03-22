@@ -9,7 +9,7 @@ class disponibilidad extends Model
 {
     use HasFactory;
 
-    protected $table = 'centro';
+    protected $table = 'disponibilidad';
 
     protected $fillable = [
         'id_aula',

@@ -39,7 +39,7 @@ Route::put('/users/{user}', [UserController::class, 'update'])->name('usuarios.u
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 Route::get('/centro', [CentroController::class, 'index'])->name('centro.index');
-Route::post('/sacardisponibles', [DisponibilidadController::class, 'index'])->name('centro.index');
+Route::post('/sacardisponibles', [DisponibilidadController::class, 'obtenerAulaId'])->name('centro.index');
 Route::get('/csrf-token', function() {
     return response()->json([csrf_token()]);
 });

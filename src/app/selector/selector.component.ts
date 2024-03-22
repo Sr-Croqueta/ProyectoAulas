@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CentroService } from '../centros.service';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selector',
@@ -14,13 +15,13 @@ import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientMo
 })
 export class SelectorComponent {
   centr: any[] = [];
-  horas: number[] = [];
+  horas: any[] = [];
   dias: Date[] = [];
   fechaSeleccionada:any;
   centroSeleccionado:any;
   horaSeleccionada:any;
 
-  constructor(public centros: CentroService) {
+  constructor(public centros: CentroService,  private router: Router) {
     this.peti();
     this.generarHoras();
     this.generarDias();
@@ -47,12 +48,7 @@ export class SelectorComponent {
 
   onSubmit() {
     // Realizar la lógica necesaria al enviar el formulario
-    this.centros.obtenerAulasDisponibles(this.centroSeleccionado,this.horaSeleccionada,this.fechaSeleccionada);
-    console.log('Formulario enviado');
-    console.log('Centro seleccionado:', this.centroSeleccionado);
-    console.log('Hora seleccionada:', this.horaSeleccionada);
-    console.log('Fecha seleccionada:', this.fechaSeleccionada);
-    // Llamar al método peti() para obtener más datos si es necesario
-    this.peti();
+    this.centros.obtenerAulasDisponibles(this.horaSeleccionada,this.fechaSeleccionada,this.centroSeleccionado);
+    this.router.navigate(['/resultados'], { state:[this.horaSeleccionada,this.fechaSeleccionada,this.centroSeleccionado] });
   }
 }
