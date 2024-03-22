@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DisponibilidadController;
 use App\Http\Controllers\CentroController;
@@ -17,17 +17,23 @@ use App\Http\Controllers\CentroController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 
 // Almacenar un nuevo usuario en la base de datos
 Route::post('/users', [UserController::class, 'store'])->name('usuarios.store');
 
+// Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
 // Mostrar los detalles de un usuario específico
 Route::get('/users/{user}', [UserController::class, 'show'])->name('usuarios.show');
+
+//antes api.php
+Route::post('registro',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('user-profile',[AuthController::class,'userProfile']);
+    Route::get('logout',[AuthController::class,'logout']);
+    });
 
 // Mostrar el formulario para editar un usuario existente
 Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('usuarios.edit');
