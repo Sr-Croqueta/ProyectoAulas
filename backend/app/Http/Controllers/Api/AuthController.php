@@ -17,17 +17,19 @@ class AuthController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
-            'password'=>'required|confirmed'
+            'password'=>'required'
         ]);
 
         $user = new User();
         $user->name=$request->name;
         $user->email=$request->email;
-        $user->password=Hass::make($request->password);
+        $user->password=Hash::make($request->password);
         $user->save();
         
 
-        return response($user,Response::HTTP_CREATED);
+       return response()->json([
+        "message"=>"Metodo register ok"
+       ]);
 
         
 
