@@ -42,11 +42,11 @@ class AuthController extends Controller
     
         if(Auth::attempt($credentials)) {
             $user = Auth::user();
-            $token = $user->createToken('token')->plainTextToken; // Corregir 'palinTextToken' a 'plainTextToken'
+            $token = $user->createToken('token')->plainTextToken; 
             $cookie = cookie('cookie_token', $token, 60*24);
-            return response(["token" => $token], Response::HTTP_OK)->withCookie($cookie); // Corregir 'Reponse' a 'Response' y 'withoutCookie' a 'withCookie'
+            return response(["token" => $token], Response::HTTP_OK)->withCookie($cookie); 
         } else {
-            return response(["message" => "Credenciales Inválidas"], Response::HTTP_UNAUTHORIZED); // Corregir 'Reponse' a 'Response'
+            return response(["message" => "Credenciales Inválidas"], Response::HTTP_UNAUTHORIZED); 
         }
     }
     
@@ -63,6 +63,8 @@ class AuthController extends Controller
 
     public function logout(){
 
+        $cookie = Cookie::forget('cookie_token');
+        return response(["message"=>"Cierre de session con exito"],Response::HTTP_OK)->withCookie($cookie);
         
     }
 

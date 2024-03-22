@@ -30,6 +30,10 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('usuarios.sho
 //antes api.php
 Route::post('registro',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('user-profile',[AuthController::class,'userProfile']);
+    Route::get('logout',[AuthController::class,'logout']);
+    });
 
 // Mostrar el formulario para editar un usuario existente
 Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('usuarios.edit');
