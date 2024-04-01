@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(name: string,email: string, password: string) {
+  register(name: string,email: string, password: string) {
     console.log(name)
     return this.http.post(`${this.apiUrl}/registro`, {name, email, password }).subscribe((aulas: any) => {
       // Manejar la respuesta aquí
@@ -27,6 +27,26 @@ export class AuthService {
       // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
   });
   }
+   login(email: string, password: string) {
+  
+    return this.http.post(`${this.apiUrl}/api/login`, { email, password }).subscribe((aulas: any) => {
+      // Manejar la respuesta aquí
+      console.log(aulas)
+      this.mensaje = aulas;
+      // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
+  });
+  }
+
+  user(email: string, password: string) {
+  
+    return this.http.post(`${this.apiUrl}/api/login`, { email, password }).subscribe((aulas: any) => {
+      // Manejar la respuesta aquí
+      console.log(aulas)
+      this.mensaje = aulas;
+      // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
+  });
+  }
+  
 
   logout(): void {
     // Elimina el token de acceso del almacenamiento local

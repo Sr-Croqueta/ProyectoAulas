@@ -67,7 +67,7 @@ class AuthController extends Controller
 
         return response()->json([
             "message"=> "userProfile OK",
-            "message"=> auth()->user()
+            "UserData"=> auth()->user()
         ],Response::HTTP_OK);
 
         
