@@ -69,4 +69,45 @@ class DisponibilidadController extends Controller
         // Puedes devolver los datos en formato JSON si así lo necesitas
         return response()->json($disponibilidades);
     }
+    public function reserva(Request $request)
+    {
+        // Obtener datos JSON de la solicitud
+        $data = $request->json()->all();
+        
+        // Validar los datos recibidos en la solicitud
+        $validator = Validator::make($data, [
+            'id_aula' => 'required',
+            'dia' => 'required',
+            'hora' => 'required',
+        ]);
+
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 400);
+        }
+
+        // Obtener los datos de la solicitud
+        $id_aula = $data['id_aula'];
+        $dia = $data['dia'];
+        $hora = $data['hora'];
+
+        
+        
+        try {
+            // Crear una nueva reserva en la base de datos
+            $reserva = new Disponibilidad();
+            
+            $reserva->id_aula = $id_aula;
+            $reserva->hora = $hora;
+            $reserva->dia = $dia;
+            
+            $reserva->save();
+
+            // Devolver una respuesta de éxito
+            return response()->json(['message' => 'Reserva creada con éxito'], 201);
+        } catch (\Exception $e) {
+            // Manejo de errores
+            return response()->json([$e]);
+        }
+    }
 }

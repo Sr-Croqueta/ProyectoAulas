@@ -35,5 +35,19 @@ export class CentroService {
     })
   }
 
+  reservaraula(aula: string) {
+    // Convertir los datos a JSON
+    
+    
+    // Realizar la solicitud POST con los datos en el cuerpo de la solicitud y las cabeceras especificadas
+    this.http.post("http://127.0.0.1:8000/reservaula", aula).subscribe((aulas: any) => {
+        // Manejar la respuesta aquí
+        console.log(aulas)
+        this.aula = aulas;
+        console.log(this.aula);
+        // Si necesitas hacer algo más con los datos, hazlo aquí dentro de la suscripción
+    });
+}
+
   
 }
