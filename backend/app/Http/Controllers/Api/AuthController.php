@@ -78,6 +78,7 @@ class AuthController extends Controller
         $cookie = Cookie::forget('cookie_token');
         return response(["message"=>"Cierre de session con exito"],Response::HTTP_OK)->withCookie($cookie);
         
+        
     }
 
     public function allUsers(){

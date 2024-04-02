@@ -4,8 +4,8 @@
     <div class="login" >
       <form class="form" (ngSubmit)="login()">
         <label for="chk" aria-hidden="true">Log in</label>
-        <input [(ngModel)]="email" class="input" type="email" name="email" placeholder="Email" required="">
-        <input [(ngModel)]="password" class="input" type="password" name="pswd" placeholder="Password" required="">
+        <input [(ngModel)]="emailr" class="input" type="email" name="email" placeholder="Email" required="">
+        <input [(ngModel)]="passwordr" class="input" type="password" name="pswd" placeholder="Password" required="">
         <button type="submit">Log in</button>
       </form>
     </div>
@@ -19,4 +19,6 @@
         <button  type="submit" >Register</button>
       </form>
     </div>
+    
 </div>
+<button  (click)="user()" >logout</button>
