@@ -18,12 +18,16 @@
     backdrop-filter:blur(10px);
     justify-content: center;
     color: white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 p{
   color: white;
 }
 .selector select {
-  width: 80%;
+  width: -webkit-fill-available;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -39,62 +43,89 @@ p{
 /* Estilos para los selects cuando están enfocados */
 .selector select:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #360034;
 }
 
-.tabla {
-  width: 60%;
-  margin-top: 10vh;
-  background-color: #322783b2;
-  backdrop-filter: blur(10px);
-  
-  overflow-x: auto; /* Agrega una barra de desplazamiento horizontal si la tabla es demasiado ancha */
+
+
+.custom-select:focus {
+  border-color: #550039;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(65, 0, 43, 0.25);
 }
 
-.tabla table {
-  width: 100%;
-  border-collapse: collapse; /* Combina los bordes de las celdas para un aspecto más limpio */
+.custom-select option {
+  color: #495057;
+  background-color: #fff;
 }
 
-.tabla th,
-.tabla td {
-  padding: 10px; /* Espacio interno dentro de las celdas */
-  text-align: center; /* Centra el contenido de las celdas */
-  border: 1px solid #ccc; /* Borde de las celdas */
-  color: white; /* Color del texto */
+.custom-select option:hover {
+  background-color: #000e1b;
 }
 
-.tabla th {
-  background-color: #322783; /* Color de fondo para las celdas de encabezado */
+
+.button {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  background-color: var(--clr);
+  color: #fff;
+  border-radius: 10rem;
+  font-weight: 600;
+  padding: .75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color .3s;
+  cursor: pointer;
 }
 
-.tabla th:first-child,
-.tabla td:first-child {
-  width: 25%; /* Ancho para la primera columna (Fecha) */
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
-.tabla td {
-  background-color: #5a008f; /* Color de fondo para las celdas de datos */
+.button:hover {
+  background-color: #000;
 }
 
-.tabla th,
-.tabla td:first-child {
-  position: sticky; /* Hace que las celdas de encabezado y la primera columna se peguen al desplazarse */
-  left: 0;
-  z-index: 1;
+.button:hover .button__icon-wrapper {
+  color: #000;
 }
 
-.tabla th:first-child {
-  z-index: 2; /* Asegura que las celdas de encabezado se superpongan sobre las celdas de datos pegadas */
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
 }
 
-.tabla .content {
-  transition: background-color 0.3s ease; /* Agrega una transición suave al cambiar el color de fondo */
-  border-top: none;
-  border-bottom: none;
-  
+.button:hover .button__icon-svg:first-child {
+  transition: transform .3s ease-in-out;
+  transform: translate(150%, -150%);
 }
 
-.tabla .content:hover {
-  background-color: #555; /* Cambia el color de fondo al pasar el cursor sobre la celda */
+.button:hover .button__icon-svg--copy {
+  transition: transform .3s ease-in-out .1s;
+  transform: translate(0);
+}
+
+
+option {
+  font-weight: normal;
+  display: block;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+  white-space: nowrap;
+  /* Agrega aquí tus estilos personalizados */
+  background: #550039;
 }

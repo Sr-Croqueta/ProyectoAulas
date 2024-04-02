@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class SelectorComponent {
   centr: any[] = [];
   horas: any[] = [];
-  dias: Date[] = [];
+  dias: any[] = [];
   fechaSeleccionada:any;
   centroSeleccionado:any;
   horaSeleccionada:any;
@@ -42,7 +42,8 @@ export class SelectorComponent {
     for (let i = 0; i < 8; i++) {
       const nuevoDia = new Date();
       nuevoDia.setDate(hoy.getDate() + i);
-      this.dias.push(nuevoDia);
+      const fechaFormateada = this.formatDate(nuevoDia);
+      this.dias.push(fechaFormateada);
     }
   }
 
@@ -51,4 +52,16 @@ export class SelectorComponent {
     this.centros.obtenerAulasDisponibles(this.horaSeleccionada,this.fechaSeleccionada,this.centroSeleccionado);
     this.router.navigate(['/resultados'], { state:[this.horaSeleccionada,this.fechaSeleccionada,this.centroSeleccionado] });
   }
+
+  formatDate(date: Date){
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    
+    // Agrega ceros iniciales si es necesario
+    const formattedDay = day < 10 ? '0' + day : day;
+    const formattedMonth = month < 10 ? '0' + month : month;
+
+    return formattedDay + '/' + formattedMonth + '/' + year;
+}
 }
