@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service'; 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
-import { EventEmitter,OnInit } from '@angular/core';
+import {Input } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -25,9 +25,11 @@ export class LoginComponent {
   errorMessage: string = '';
 
   
+  emailr:string='';
+  passwordr:string='';
 
 
-  constructor(private authService: AuthService,private router:Router) {}
+  constructor(public authService:AuthService,private router:Router) {}
 
   onSubmit(): void {
     console.log("entra")
@@ -39,11 +41,18 @@ export class LoginComponent {
 
   login(): void {
     console.log("logeado")
-    this.authService.login(this.email, this.password)
-
+    this.authService.login(this.emailr, this.passwordr)
+     
+    // console.log(localStorage.getItem("accessToken"))
     // this.authService.userProfile(this.email, this.password)
     
       
+  }
+
+  user():void{
+    this.authService.user()
+    this.router.navigate(['/'])
+  
   }
 
 }
