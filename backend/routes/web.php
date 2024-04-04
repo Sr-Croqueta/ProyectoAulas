@@ -8,6 +8,7 @@ use App\Http\Controllers\DisponibilidadController;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\AnuncioController;
 use App\Http\Controllers\EnlaceController;
+use App\Http\Controllers\ContactoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +60,17 @@ Route::get('/enlaces/{enlace}/edit', [EnlaceController::class, 'edit'])->name('e
 Route::put('/enlaces/{enlace}', [EnlaceController::class, 'update'])->name('enlaces.update');
 Route::delete('/enlaces/{enlace}', [EnlaceController::class, 'destroy'])->name('enlaces.destroy');
 //finenlaces
+//contactos
+Route::get('/contactos', [ContactoController::class, 'index']); // Obtener todos los contactos
+Route::post('/contactos', [ContactoController::class, 'store']); // Crear un nuevo contacto
+Route::get('/contactos/{id}', [ContactoController::class, 'show']); // Obtener un contacto por su ID
+Route::put('/contactos/{id}', [ContactoController::class, 'update']); // Actualizar un contacto por su ID
+Route::delete('/contactos/{id}', [ContactoController::class, 'destroy']); // Eliminar un contacto por su ID
 
+// Rutas para filtrar contactos por tipo
+Route::get('/contactos/internos', [ContactoController::class, 'internos']); // Obtener todos los contactos internos
+Route::get('/contactosexternos', [ContactoController::class, 'externos']); // Obtener todos los contactos externos
+//fin de contactos
 //anuncios
 Route::get('/anuncios', [AnuncioController::class, 'index'])->name('anuncios.index');
 Route::get('/anuncios/create', [AnuncioController::class, 'create'])->name('anuncios.create');
