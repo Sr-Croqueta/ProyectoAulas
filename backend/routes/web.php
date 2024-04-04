@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DisponibilidadController;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\AnuncioController;
+use App\Http\Controllers\EnlaceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +49,18 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('usuari
 Route::get('/centro', [CentroController::class, 'index'])->name('centro.index');
 Route::post('/sacardisponibles', [DisponibilidadController::class, 'obtenerAulaId']);
 Route::post('/reservaula', [DisponibilidadController::class, 'reserva']);
+
+//enlaces
+Route::get('/enlaces', [EnlaceController::class, 'index'])->name('enlaces.index');
+Route::get('/enlaces/create', [EnlaceController::class, 'create'])->name('enlaces.create');
+Route::post('/enlaces', [EnlaceController::class, 'store'])->name('enlaces.store');
+Route::get('/enlaces/{enlace}', [EnlaceController::class, 'show'])->name('enlaces.show');
+Route::get('/enlaces/{enlace}/edit', [EnlaceController::class, 'edit'])->name('enlaces.edit');
+Route::put('/enlaces/{enlace}', [EnlaceController::class, 'update'])->name('enlaces.update');
+Route::delete('/enlaces/{enlace}', [EnlaceController::class, 'destroy'])->name('enlaces.destroy');
+//finenlaces
+
+//anuncios
 Route::get('/anuncios', [AnuncioController::class, 'index'])->name('anuncios.index');
 Route::get('/anuncios/create', [AnuncioController::class, 'create'])->name('anuncios.create');
 Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
@@ -55,6 +68,8 @@ Route::get('/anuncios/{id}', [AnuncioController::class, 'show'])->name('anuncios
 Route::get('/anuncios/{id}/edit', [AnuncioController::class, 'edit'])->name('anuncios.edit');
 Route::put('/anuncios/{id}', [AnuncioController::class, 'update'])->name('anuncios.update');
 Route::delete('/anuncios/{id}', [AnuncioController::class, 'destroy'])->name('anuncios.destroy');
+//finanuncios
+
 Route::get('/csrf-token', function() {
     return response()->json([csrf_token()]);
 });

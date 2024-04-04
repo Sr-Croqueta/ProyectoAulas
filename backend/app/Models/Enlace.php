@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Enlace extends Model
 {
     use HasFactory;
+
+    protected $table = 'enlaces';
+
+    protected $fillable = [
+        "nombre",
+        'direccion',
+        'notas'
+    ];
 }

@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         'registro',
         'login',
         'reservaula',
-        'anuncios'
+        'anuncios',
+        'enlaces'
     ];
 }
