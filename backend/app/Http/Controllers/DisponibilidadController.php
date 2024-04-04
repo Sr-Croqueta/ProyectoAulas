@@ -35,7 +35,7 @@ class DisponibilidadController extends Controller
     try {
         // Buscar los registros de disponibilidad para la hora, día y centro especificados
         $disponibilidades = Disponibilidad::where('hora', $hora)
-            ->whereDate('dia', $dia)
+            ->where('dia', $dia)
             ->get();
 
         // Array para almacenar los IDs de aula
@@ -91,7 +91,14 @@ class DisponibilidadController extends Controller
         $dia = $data['dia'];
         $hora = $data['hora'];
 
-        
+        $existingReserva = Disponibilidad::where('id_aula', $id_aula)
+        ->where('dia', $dia)
+        ->where('hora', $hora)
+        ->first();
+
+    if ($existingReserva) {
+        return response()->json(['error' => 'Ya existe una reserva para este aula en este día y hora'], 400);
+    }
         
         try {
             // Crear una nueva reserva en la base de datos
@@ -110,4 +117,9 @@ class DisponibilidadController extends Controller
             return response()->json([$e]);
         }
     }
+    public function disponible($id_aula, $dia, $hora){
+
+
+    }
+
 }

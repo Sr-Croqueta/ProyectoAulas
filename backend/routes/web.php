@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DisponibilidadController;
 use App\Http\Controllers\CentroController;
+use App\Http\Controllers\AnuncioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,13 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('usuari
 Route::get('/centro', [CentroController::class, 'index'])->name('centro.index');
 Route::post('/sacardisponibles', [DisponibilidadController::class, 'obtenerAulaId']);
 Route::post('/reservaula', [DisponibilidadController::class, 'reserva']);
+Route::get('/anuncios', [AnuncioController::class, 'index'])->name('anuncios.index');
+Route::get('/anuncios/create', [AnuncioController::class, 'create'])->name('anuncios.create');
+Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
+Route::get('/anuncios/{id}', [AnuncioController::class, 'show'])->name('anuncios.show');
+Route::get('/anuncios/{id}/edit', [AnuncioController::class, 'edit'])->name('anuncios.edit');
+Route::put('/anuncios/{id}', [AnuncioController::class, 'update'])->name('anuncios.update');
+Route::delete('/anuncios/{id}', [AnuncioController::class, 'destroy'])->name('anuncios.destroy');
 Route::get('/csrf-token', function() {
     return response()->json([csrf_token()]);
 });
