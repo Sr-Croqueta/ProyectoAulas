@@ -6,15 +6,15 @@ import { IntranetService } from '../intranet.service';
 import { OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-inicio',
+  selector: 'app-enlaces',
   standalone: true,
   imports: [FormsModule, CommonModule, HttpClientModule],
-  templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css',
+  templateUrl: './enlaces.component.html',
+  styleUrl: './enlaces.component.css',
   providers: [IntranetService]
 })
-export class InicioComponent implements OnInit {
-  anuncios: any[] = [];
+export class EnlacesComponent implements OnInit {
+  enlaces: any[] = [];
   cont: number = 1;
   limit = 10;
   totalPages: number = 0;
@@ -24,15 +24,15 @@ export class InicioComponent implements OnInit {
   constructor(public intranet: IntranetService) {}
 
   ngOnInit(): void {
-    this.intranet.obteneranuncios().subscribe((datos: any[]) => {
-      this.anuncios = datos;
+    this.intranet.obtenerenlaces().subscribe((datos: any[]) => {
+      this.enlaces = datos;
       this.calcularTotalPaginas();
-      console.log(this.anuncios)
+      console.log(this.enlaces)
     });
   }
 
   calcularTotalPaginas() {
-    this.totalPages = Math.ceil(this.anuncios.length / this.limit);
+    this.totalPages = Math.ceil(this.enlaces.length / this.limit);
   }
 
   paginacion(peti: string) {

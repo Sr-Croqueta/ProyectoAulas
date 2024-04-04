@@ -11,12 +11,10 @@ export class IntranetService {
     
   }
 
-  obteneranuncios():any{
-    this.http.get("http://127.0.0.1:8000/anuncios").subscribe ((datos:any)=>{
-      
-      this.anuncios = datos;
-      console.log(this.anuncios)
-      return this.anuncios;
-    })
+  obteneranuncios() {
+    return this.http.get<any[]>("http://127.0.0.1:8000/anuncios");
+  }
+  obtenerenlaces() {
+    return this.http.get<any[]>("http://127.0.0.1:8000/enlaces");
   }
 }

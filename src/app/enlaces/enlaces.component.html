@@ -25,14 +25,14 @@
     <h2>Anuncios de Empresa</h2>
     <ul class="anuncios-list">
         <li class="anuncio-item">
-            <h4>Titulo</h4>
-            <p>Modificado</p>
+            <h4>Direccion</h4>
+            <p>Notas</p>
         </li>
         <ng-container *ngIf="shouldReloadNgFor">
-            <ng-container *ngFor="let anuncio of anuncios.slice(cont - 1, cont - 1 + limit)">
+            <ng-container *ngFor="let anuncio of enlaces.slice(cont - 1, cont - 1 + limit)">
                 <li class="anuncio-item">
-                    <h4>{{ anuncio.titulo }}</h4>
-                    <p>{{anuncio.modificado_en}}</p>
+                    <a href="{{anuncio.direccion}}"><h4>{{ anuncio.nombre}}</h4></a>
+                    <p>{{anuncio.notas}}</p>
                     
                 </li>
             </ng-container>
