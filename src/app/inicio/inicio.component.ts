@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IntranetService } from '../intranet.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-inicio',
@@ -12,21 +13,22 @@ import { IntranetService } from '../intranet.service';
   styleUrl: './inicio.component.css',
   providers: [IntranetService]
 })
-export class InicioComponent {
-anuncios: any[] = [
-  
-];
+export class InicioComponent implements OnInit {
+  anuncios: any[] = [];
   cont: number = 1;
   limit = 10;
   totalPages: number = 0;
   page: number = 1;
   shouldReloadNgFor: boolean = true;
 
-  constructor(public intranet:IntranetService) {
-    this.calcularTotalPaginas();
-    this.anuncios=this.intranet.obteneranuncios();
-    console.log(this.anuncios)
+  constructor(public intranet: IntranetService) {}
 
+  ngOnInit(): void {
+    this.intranet.obteneranuncios().subscribe((datos: any[]) => {
+      this.anuncios = datos;
+      this.calcularTotalPaginas();
+      console.log(this.anuncios)
+    });
   }
 
   calcularTotalPaginas() {
@@ -52,6 +54,4 @@ anuncios: any[] = [
     }
     this.shouldReloadNgFor = !this.shouldReloadNgFor;
   }
-  
-  
 }

@@ -29,9 +29,10 @@
             <p>Modificado</p>
         </li>
         <ng-container *ngIf="shouldReloadNgFor">
-            <ng-container *ngFor="let anuncio of intranet.anuncios.slice(cont - 1, cont - 1 + limit)">
+            <ng-container *ngFor="let anuncio of anuncios.slice(cont - 1, cont - 1 + limit)">
                 <li class="anuncio-item">
                     <h4>{{ anuncio.titulo }}</h4>
+                    <p>{{anuncio.modificado_en}}</p>
                     
                 </li>
             </ng-container>
