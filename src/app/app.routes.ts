@@ -6,6 +6,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { AplicacionesComponent } from './aplicaciones/aplicaciones.component';
 import { EnlacesComponent } from './enlaces/enlaces.component';
 import { ContactosexternosComponent } from './contactosexternos/contactosexternos.component';
+import { ContactosinternosComponent } from './contactosinternos/contactosinternos.component';
 
 export const routes: Routes = [ 
     {path: "",redirectTo:"inicio", pathMatch:"full"},
@@ -15,7 +16,8 @@ export const routes: Routes = [
     {path:"inicio", component:InicioComponent},
     {path:"aplicaciones", component:AplicacionesComponent},
     {path:"enlaces", component:EnlacesComponent},
-    {path:"contactos-externos", component:ContactosexternosComponent}
+    {path:"contactos-externos", component:ContactosexternosComponent},
+    {path:"contactos-internos", component:ContactosinternosComponent}
 
 ];
 

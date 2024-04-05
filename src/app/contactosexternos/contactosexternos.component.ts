@@ -22,7 +22,6 @@ export class ContactosexternosComponent implements OnInit {
   shouldReloadNgFor: boolean = true;
 
   constructor(public intranet: IntranetService) {}
-
   ngOnInit(): void {
     this.intranet.obtenercontactext().subscribe((datos: any[]) => {
       this.contactos = datos;

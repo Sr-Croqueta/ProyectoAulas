@@ -68,7 +68,7 @@ Route::put('/contactos/{id}', [ContactoController::class, 'update']); // Actuali
 Route::delete('/contactos/{id}', [ContactoController::class, 'destroy']); // Eliminar un contacto por su ID
 
 // Rutas para filtrar contactos por tipo
-Route::get('/contactos/internos', [ContactoController::class, 'internos']); // Obtener todos los contactos internos
+Route::get('/contactosinternos', [ContactoController::class, 'internos']); // Obtener todos los contactos internos
 Route::get('/contactosexternos', [ContactoController::class, 'externos']); // Obtener todos los contactos externos
 //fin de contactos
 //anuncios

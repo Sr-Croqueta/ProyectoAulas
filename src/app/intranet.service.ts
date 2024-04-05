@@ -7,7 +7,7 @@ import { Time } from '@angular/common';
 })
 export class IntranetService {
   anuncios:any[]=[];
-  constructor(private http: HttpClient, ) {
+  constructor(private http: HttpClient) {
     
   }
 
@@ -19,5 +19,8 @@ export class IntranetService {
   }
   obtenercontactext(){
     return this.http.get<any[]>("http://127.0.0.1:8000/contactosexternos");
+  }
+  obtenercontactint(){
+    return this.http.get<any[]>("http://127.0.0.1:8000/contactosinternos");
   }
 }
