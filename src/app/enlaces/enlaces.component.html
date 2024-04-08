@@ -31,8 +31,8 @@
         <ng-container *ngIf="shouldReloadNgFor">
             <ng-container *ngFor="let anuncio of enlaces.slice(cont - 1, cont - 1 + limit)">
                 <li class="anuncio-item">
-                    <a href="{{anuncio.Direccion}}">{{anuncio.Nombre}}<h4></h4></a>
-                    <p>{{anuncio.Notas}}</p>
+                    <a href="{{anuncio.direccion}}">{{anuncio.nombre}}<h4></h4></a>
+                    <p>{{anuncio.notas}}</p>
                     
                 </li>
             </ng-container>
