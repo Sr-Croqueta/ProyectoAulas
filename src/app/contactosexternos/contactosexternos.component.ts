@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IntranetService } from '../intranet.service';
 import { OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
+import { ModalContactosExternosComponent } from '../modal-contactos-externos/modal-contactos-externos.component';
 
 @Component({
   selector: 'app-contactosexternos',
@@ -21,7 +24,7 @@ export class ContactosexternosComponent implements OnInit {
   page: number = 1;
   shouldReloadNgFor: boolean = true;
 
-  constructor(public intranet: IntranetService) {}
+  constructor(public intranet: IntranetService,public dialog: MatDialog) {}
   ngOnInit(): void {
     this.intranet.obtenercontactext().subscribe((datos: any[]) => {
       this.contactos = datos;
@@ -52,5 +55,12 @@ export class ContactosexternosComponent implements OnInit {
       this.shouldReloadNgFor = !this.shouldReloadNgFor; // Cambiar el estado para recargar ngFor
     }
     this.shouldReloadNgFor = !this.shouldReloadNgFor;
+  }
+
+  openModal(anuncio: any): void {
+    const dialogRef = this.dialog.open(ModalContactosExternosComponent, {
+      width: '250px',
+      data: anuncio
+    });
   }
 }
