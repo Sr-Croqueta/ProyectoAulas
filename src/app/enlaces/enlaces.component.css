@@ -196,3 +196,26 @@
   transition: 0.4s;
   transform: translateX(-56px);
 }
+.anuncios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.anuncios-table th,
+.anuncios-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.anuncios-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.anuncios-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.anuncios-table tr:hover {
+  background-color: #ddd;
+}

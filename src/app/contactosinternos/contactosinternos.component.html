@@ -22,27 +22,30 @@
 
 
 <div class="anuncios-container">
-    <h2>Anuncios de Empresa</h2>
-    <ul class="anuncios-list">
-        <li class="anuncio-item">
-            <h4>Centro</h4>
-            <p>Nombre</p>
-            <p>Nº Telefono</p>
-
-        </li>
+    <h2>Contactos Internos</h2><br>
+    <table class="contactos-table">
+      <thead>
+        <tr>
+          <th>Centro</th>
+          <th>Nombre</th>
+          <th>Nº Telefono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
         <ng-container *ngIf="shouldReloadNgFor">
-            <ng-container *ngFor="let anuncio of contactos.slice(cont - 1, cont - 1 + limit)">
-                <li class="anuncio-item">
-                    <h4>{{ anuncio.CentroMedico}}</h4>
-                    <p>{{anuncio.Nombre}}</p>
-                    <p>{{anuncio.NTelefono}}</p>
-                    <button mat-raised-button (click)="openModal(anuncio)">Ver más</button>
-                    
-                </li>
-            </ng-container>
+          <ng-container *ngFor="let anuncio of contactos.slice(cont - 1, cont - 1 + limit)">
+            <tr>
+              <td>{{ anuncio.CentroMedico }}</td>
+              <td>{{ anuncio.Nombre }}</td>
+              <td>{{ anuncio.NTelefono }}</td>
+              <td><button mat-raised-button (click)="openModal(anuncio)">Ver más</button></td>
+            </tr>
+          </ng-container>
         </ng-container>
-    </ul>
-
+      </tbody>
+    </table>
+    
     <div class="pagina" >
         <button class="button1" (click)="paginacion('<')" *ngIf="page != 1">
             <div class="button-box1">

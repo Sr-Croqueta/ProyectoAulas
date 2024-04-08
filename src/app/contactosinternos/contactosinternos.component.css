@@ -196,4 +196,28 @@
     transition: 0.4s;
     transform: translateX(-56px);
   }
+  .contactos-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .contactos-table th,
+  .contactos-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .contactos-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+  
+  .contactos-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .contactos-table tr:hover {
+    background-color: #ddd;
+  }
+  
   

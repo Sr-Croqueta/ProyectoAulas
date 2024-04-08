@@ -22,22 +22,26 @@
 
 
 <div class="anuncios-container">
-    <h2>Anuncios de Empresa</h2>
-    <ul class="anuncios-list">
-        <li class="anuncio-item">
-            <h4>Direccion</h4>
-            <p>Notas</p>
-        </li>
-        <ng-container *ngIf="shouldReloadNgFor">
-            <ng-container *ngFor="let anuncio of enlaces.slice(cont - 1, cont - 1 + limit)">
-                <li class="anuncio-item">
-                    <a href="{{anuncio.direccion}}">{{anuncio.nombre}}<h4></h4></a>
-                    <p>{{anuncio.notas}}</p>
-                    
-                </li>
-            </ng-container>
-        </ng-container>
-    </ul>
+    <h2>Enlaces de Interés</h2><br>
+<table class="anuncios-table">
+  <thead>
+    <tr>
+      <th>Dirección</th>
+      <th>Notas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="shouldReloadNgFor">
+      <ng-container *ngFor="let anuncio of enlaces.slice(cont - 1, cont - 1 + limit)">
+        <tr>
+          <td><a href="{{anuncio.direccion}}">{{anuncio.nombre}}</a></td>
+          <td>{{anuncio.notas}}</td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>
+
 
     <div class="pagina" >
         <button class="button1" (click)="paginacion('<')" *ngIf="page != 1">
