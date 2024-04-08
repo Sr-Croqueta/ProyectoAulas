@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { IntranetService } from '../intranet.service';
 import { OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-inicio',
@@ -21,7 +23,7 @@ export class InicioComponent implements OnInit {
   page: number = 1;
   shouldReloadNgFor: boolean = true;
 
-  constructor(public intranet: IntranetService) {}
+  constructor(public intranet: IntranetService,public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.intranet.obteneranuncios().subscribe((datos: any[]) => {
@@ -53,5 +55,12 @@ export class InicioComponent implements OnInit {
       this.shouldReloadNgFor = !this.shouldReloadNgFor; // Cambiar el estado para recargar ngFor
     }
     this.shouldReloadNgFor = !this.shouldReloadNgFor;
+  }
+
+  openModal(anuncio: any): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '250px',
+      data: anuncio
+    });
   }
 }

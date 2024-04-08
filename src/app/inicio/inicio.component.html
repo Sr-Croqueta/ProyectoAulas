@@ -26,13 +26,14 @@
     <ul class="anuncios-list">
         <li class="anuncio-item">
             <h4>Titulo</h4>
-            <p>Modificado</p>
+            <p>Caduca</p>
         </li>
         <ng-container *ngIf="shouldReloadNgFor">
             <ng-container *ngFor="let anuncio of anuncios.slice(cont - 1, cont - 1 + limit)">
                 <li class="anuncio-item">
-                    <h4>{{ anuncio.titulo }}</h4>
-                    <p>{{anuncio.modificado_en}}</p>
+                    <h4>{{ anuncio.Titulo }}</h4>
+                    <p>{{anuncio.Caduca}}</p>
+                    <button mat-raised-button (click)="openModal(anuncio)">Ver más</button>
                     
                 </li>
             </ng-container>
