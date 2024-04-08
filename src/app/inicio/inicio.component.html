@@ -28,6 +28,7 @@
         <tr>
           <th>Título</th>
           <th>Modificado</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +37,7 @@
             <tr>
               <td>{{ anuncio.titulo }}</td>
               <td>{{ anuncio.modificado_en }}</td>
+              <td><button mat-raised-button (click)="openModal(anuncio)">Ver más</button></td>
             </tr>
           </ng-container>
         </ng-container>
