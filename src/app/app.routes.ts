@@ -7,6 +7,7 @@ import { AplicacionesComponent } from './aplicaciones/aplicaciones.component';
 import { EnlacesComponent } from './enlaces/enlaces.component';
 import { ContactosexternosComponent } from './contactosexternos/contactosexternos.component';
 import { ContactosinternosComponent } from './contactosinternos/contactosinternos.component';
+import { ModalComponent } from './modal/modal.component';
 
 export const routes: Routes = [ 
     {path: "",redirectTo:"inicio", pathMatch:"full"},
@@ -17,7 +18,10 @@ export const routes: Routes = [
     {path:"aplicaciones", component:AplicacionesComponent},
     {path:"enlaces", component:EnlacesComponent},
     {path:"contactos-externos", component:ContactosexternosComponent},
-    {path:"contactos-internos", component:ContactosinternosComponent}
+    {path:"contactos-internos", component:ContactosinternosComponent},
+    {path:"modal", component:ModalComponent},
+
+
 
 ];
 
