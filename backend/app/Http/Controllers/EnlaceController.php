@@ -61,4 +61,8 @@ class EnlaceController extends Controller
 
         return response()->json(null, 204);
     }
+    public function BuscarEnlace()
+    {
+        
+    }
 }

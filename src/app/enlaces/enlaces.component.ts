@@ -16,7 +16,7 @@ import { OnInit } from '@angular/core';
 export class EnlacesComponent implements OnInit {
   enlaces: any[] = [];
   cont: number = 1;
-  limit = 10;
+  limit = 12;
   totalPages: number = 0;
   page: number = 1;
   shouldReloadNgFor: boolean = true;
